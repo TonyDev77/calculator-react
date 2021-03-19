@@ -1,0 +1,16 @@
+.display {
+    grid-column: span 4;
+
+    font-size: 2em;
+    color: snow;
+    background-color: #0004;
+    border: none;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+
+    overflow: hidden;
+
+}
