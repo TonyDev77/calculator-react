@@ -5,10 +5,11 @@
 
 * {
   font-family: "RobotoMono", "monospace";
+  /*padding: 0;*/
+  margin: 0;
 }
 
 body {
-
   display: flex;
   height: 100vh;
   justify-content: center;
@@ -18,15 +19,6 @@ body {
   color: snow;
   background: linear-gradient(to right, rgb(83, 105, 118), rgb(41, 46, 73));
 
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+
