@@ -17,6 +17,7 @@ class Calculator extends Component {
 
     constructor(props) {
         super(props);
+
         this.clearMemory = this.clearMemory.bind(this);
         this.setOperation = this.setOperation.bind(this);
         this.addDigit = this.addDigit.bind(this);
@@ -26,7 +27,47 @@ class Calculator extends Component {
         this.setState({ ...initialState });
     }
 
+    setOperation(mathOperation) {
+
+        if (this.state.current === 0) {
+            this.setState({ operation: mathOperation, current: 1, clearDisplay: true })
+        } else {
+            const isEqualsOperator = mathOperation === '='
+            const currentOperation = this.state.operation
+
+            const newValues = [...this.state.values]
+
+            switch (currentOperation) {
+                case "*":
+                    newValues[0] = newValues[0] * newValues[1];
+                    break
+                case "/":
+                    newValues[0] = newValues[0] / newValues[1];
+                    break
+                case "+":
+                    newValues[0] = newValues[0] + newValues[1];
+                    break
+                case "-":
+                    newValues[0] = newValues[0] - newValues[1];
+                    break
+                default:
+                    newValues[0] = this.state.values
+            }
+
+            newValues[1] = 0
+
+            this.setState({
+                displayValue: newValues[0],
+                operation: isEqualsOperator ? null : mathOperation,
+                current: isEqualsOperator ? 0 : 1,
+                clearDisplay: !isEqualsOperator,
+                values: newValues
+            })
+        }
+    }
+
     addDigit(n) {
+
         if (n === "." && this.state.displayValue.includes(".")) {
             return
         }
@@ -47,34 +88,6 @@ class Calculator extends Component {
             console.log(newValue)
         }
     }
-
-    setOperation(mathOperation) {
-        if (this.state.current === 0) {
-            this.setState({ operation: mathOperation, current: 1, clearDisplay: true });
-        } else {
-            const isEqualsOperator = mathOperation === "=";
-            const currentOperation = this.state.operation;
-            const arrayValues = [...this.state.values];
-
-            try {
-                arrayValues[0] = eval(`${arrayValues[0]} ${currentOperation} ${arrayValues[1]}`);
-            } catch (e) {
-                arrayValues[0] = this.state.values
-            }
-            
-            arrayValues[1] = 0;
-
-            this.setState({
-                displayValue: arrayValues[0],
-                operation: isEqualsOperator ? null : mathOperation,
-                current: isEqualsOperator ? 0 : 1,
-                clearDisplay: !isEqualsOperator,
-                value: arrayValues
-
-            });
-        }
-    }
-
 
     render() {
         return (
