@@ -1,7 +1,7 @@
-import React, {Component} from "react";
-import "./Calculator.css";
+import React, { Component } from "react";
 import Button from "../components/Button";
 import Display from "../components/Display";
+import "./Calculator.css";
 
 const initialState = {
     displayValue: "0",
